@@ -23,9 +23,9 @@ Partial Class main
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.cbPorts = New System.Windows.Forms.ComboBox()
         Me.btConect = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -33,6 +33,8 @@ Partial Class main
         Me.graf = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.cTiempoMuestreo = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txCantSens = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.lbEstado = New System.Windows.Forms.Label()
         Me.cbDispositivo = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -118,19 +120,19 @@ Partial Class main
         '
         'graf
         '
-        ChartArea5.CursorX.IsUserSelectionEnabled = True
-        ChartArea5.CursorY.IsUserSelectionEnabled = True
-        ChartArea5.Name = "ChartArea1"
-        Me.graf.ChartAreas.Add(ChartArea5)
-        Legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom
-        Legend5.Name = "Legend1"
-        Me.graf.Legends.Add(Legend5)
+        ChartArea1.CursorX.IsUserSelectionEnabled = True
+        ChartArea1.CursorY.IsUserSelectionEnabled = True
+        ChartArea1.Name = "ChartArea1"
+        Me.graf.ChartAreas.Add(ChartArea1)
+        Legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom
+        Legend1.Name = "Legend1"
+        Me.graf.Legends.Add(Legend1)
         Me.graf.Location = New System.Drawing.Point(12, 98)
         Me.graf.Name = "graf"
-        Series5.ChartArea = "ChartArea1"
-        Series5.Legend = "Legend1"
-        Series5.Name = "Series1"
-        Me.graf.Series.Add(Series5)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.graf.Series.Add(Series1)
         Me.graf.Size = New System.Drawing.Size(724, 327)
         Me.graf.TabIndex = 5
         Me.graf.Text = "Chart1"
@@ -138,7 +140,7 @@ Partial Class main
         'cTiempoMuestreo
         '
         Me.cTiempoMuestreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.cTiempoMuestreo.Location = New System.Drawing.Point(115, 193)
+        Me.cTiempoMuestreo.Location = New System.Drawing.Point(115, 177)
         Me.cTiempoMuestreo.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.cTiempoMuestreo.Minimum = New Decimal(New Integer() {5, 0, 0, 65536})
         Me.cTiempoMuestreo.Name = "cTiempoMuestreo"
@@ -148,6 +150,8 @@ Partial Class main
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txCantSens)
+        Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.lbEstado)
         Me.GroupBox1.Controls.Add(Me.cbDispositivo)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -160,10 +164,27 @@ Partial Class main
         Me.GroupBox1.Controls.Add(Me.btConect)
         Me.GroupBox1.Location = New System.Drawing.Point(742, 98)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(199, 219)
+        Me.GroupBox1.Size = New System.Drawing.Size(199, 261)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Configuraciones"
+        '
+        'txCantSens
+        '
+        Me.txCantSens.Location = New System.Drawing.Point(112, 217)
+        Me.txCantSens.Name = "txCantSens"
+        Me.txCantSens.Size = New System.Drawing.Size(80, 20)
+        Me.txCantSens.TabIndex = 15
+        Me.txCantSens.Text = "2"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(6, 221)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(76, 13)
+        Me.Label12.TabIndex = 14
+        Me.Label12.Text = "Cantidad Sens"
         '
         'lbEstado
         '
@@ -203,7 +224,7 @@ Partial Class main
         '
         'txNombreSerie
         '
-        Me.txNombreSerie.Location = New System.Drawing.Point(9, 167)
+        Me.txNombreSerie.Location = New System.Drawing.Point(9, 151)
         Me.txNombreSerie.Name = "txNombreSerie"
         Me.txNombreSerie.Size = New System.Drawing.Size(184, 20)
         Me.txNombreSerie.TabIndex = 9
@@ -212,7 +233,7 @@ Partial Class main
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 151)
+        Me.Label4.Location = New System.Drawing.Point(6, 135)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(86, 13)
         Me.Label4.TabIndex = 8
@@ -221,7 +242,7 @@ Partial Class main
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 200)
+        Me.Label2.Location = New System.Drawing.Point(6, 184)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(103, 13)
         Me.Label2.TabIndex = 7
@@ -229,7 +250,7 @@ Partial Class main
         '
         'btIniciar
         '
-        Me.btIniciar.Location = New System.Drawing.Point(742, 323)
+        Me.btIniciar.Location = New System.Drawing.Point(742, 365)
         Me.btIniciar.Name = "btIniciar"
         Me.btIniciar.Size = New System.Drawing.Size(85, 30)
         Me.btIniciar.TabIndex = 8
@@ -239,7 +260,7 @@ Partial Class main
         'btDetener
         '
         Me.btDetener.Enabled = False
-        Me.btDetener.Location = New System.Drawing.Point(856, 359)
+        Me.btDetener.Location = New System.Drawing.Point(856, 401)
         Me.btDetener.Name = "btDetener"
         Me.btDetener.Size = New System.Drawing.Size(85, 30)
         Me.btDetener.TabIndex = 9
@@ -270,7 +291,7 @@ Partial Class main
         'btTarar
         '
         Me.btTarar.Enabled = False
-        Me.btTarar.Location = New System.Drawing.Point(742, 359)
+        Me.btTarar.Location = New System.Drawing.Point(742, 401)
         Me.btTarar.Name = "btTarar"
         Me.btTarar.Size = New System.Drawing.Size(85, 30)
         Me.btTarar.TabIndex = 12
@@ -313,7 +334,7 @@ Partial Class main
         'btPausa
         '
         Me.btPausa.BackColor = System.Drawing.SystemColors.Control
-        Me.btPausa.Location = New System.Drawing.Point(856, 323)
+        Me.btPausa.Location = New System.Drawing.Point(856, 365)
         Me.btPausa.Name = "btPausa"
         Me.btPausa.Size = New System.Drawing.Size(85, 30)
         Me.btPausa.TabIndex = 17
@@ -426,7 +447,7 @@ Partial Class main
         '
         'openFolderLog
         '
-        Me.openFolderLog.Location = New System.Drawing.Point(742, 395)
+        Me.openFolderLog.Location = New System.Drawing.Point(742, 437)
         Me.openFolderLog.Name = "openFolderLog"
         Me.openFolderLog.Size = New System.Drawing.Size(85, 30)
         Me.openFolderLog.TabIndex = 28
@@ -466,7 +487,7 @@ Partial Class main
         'btCal
         '
         Me.btCal.Enabled = False
-        Me.btCal.Location = New System.Drawing.Point(856, 395)
+        Me.btCal.Location = New System.Drawing.Point(856, 437)
         Me.btCal.Name = "btCal"
         Me.btCal.Size = New System.Drawing.Size(85, 30)
         Me.btCal.TabIndex = 32
@@ -657,4 +678,6 @@ Partial Class main
     Friend WithEvents btInitCal As Button
     Friend WithEvents lbConstCal As Label
     Friend WithEvents Timer4 As Timer
+    Friend WithEvents txCantSens As TextBox
+    Friend WithEvents Label12 As Label
 End Class

@@ -93,7 +93,11 @@ Public Class main
 
     'actualizacion 2019
     Dim requestDato As String = "r"
-    Dim valueIn As Double
+    Dim valueIn As String
+    Dim cantSens As Integer
+    Dim hayDato As Boolean
+    Dim vecSens(0) As Double
+    Dim vecNombresSens(0) As String
 
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -190,8 +194,12 @@ Public Class main
 
 
     Private Sub btIniciar_Click(sender As Object, e As EventArgs) Handles btIniciar.Click
+        cantSens = CInt(txCantSens.Text)
+        ReDim vecSens(cantSens - 1)
+        ReDim vecNombresSens(cantSens - 1)
+
         'inicia la adquisición en tiempo real
-        configGraf()
+
         bloquearControles()
 
         btIniciar.Enabled = False
@@ -205,20 +213,25 @@ Public Class main
         createHeader()
 
         If currentDevice = 0 Then
+            configGraf()
             Timer1.Interval = tiempoMuestreo * 1000
             Timer1.Enabled = True
         End If
 
         If currentDevice = 1 Then
+            configGraf()
             Timer3.Interval = tiempoMuestreo * 1000
             Timer3.Enabled = True
         End If
 
         If currentDevice = 2 Then
             'vemos
+            configGrafType2()
             Timer4.Interval = tiempoMuestreo * 1000
             Timer4.Enabled = True
         End If
+
+
 
     End Sub
 
@@ -357,12 +370,12 @@ Public Class main
 
             Case 2
                 objPort.BaudRate = 9600
-                objPort.NewLine = "/"
+                objPort.NewLine = vbCr
         End Select
 
         objPort.ReceivedBytesThreshold = 1
         objPort.ReadBufferSize = 64
-        objPort.ReadTimeout = 150
+        'objPort.ReadTimeout = 150              'ver para otras versiones si hay que volver a poner esta linea
 
         Try
             objPort.Open()
@@ -416,11 +429,11 @@ Public Class main
         ElseIf currentDevice = 2 Then
             'ponemos la forma en que vamos a manejar los datos
             Try
-                Dim str As String = objPort.ReadLine
-
-                valueIn = Convert.ToDouble(str)
+                valueIn = objPort.ReadLine
+                hayDato = True
+                Debug.Print(valueIn)
             Catch ex As Exception
-
+                hayDato = False
             End Try
 
         End If
@@ -536,16 +549,28 @@ Public Class main
     End Sub
 
     Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
-
+        Dim aux() As String
 
         objPort.Write(requestDato)
         lbTiempo.Text = vecTime
 
-        grafTiempoReal(valueIn / 100)
-        saveData(valueIn / 100)
-        lbValorInstantaneo.Text = valueIn / 100
+        'parseamos la trama
+        If hayDato = True Then
+            Dim i As Integer
+            aux = Split(valueIn, "/", -1, Microsoft.VisualBasic.CompareMethod.Text)
+
+            For i = 0 To cantSens - 1
+                vecSens(i) = aux(i)
+            Next
+        End If
+
+        grafMultipleSens()
+        saveMultipleData()
+
+        lbValorInstantaneo.Text = valueIn
 
         vecTime = vecTime + tiempoMuestreo
+        hayDato = False
     End Sub
 
     '///////////////////////////////////////////////////////
@@ -575,12 +600,30 @@ Public Class main
         graf.ChartAreas(0).AxisX.Minimum = 0
         graf.ChartAreas(0).AxisX.Maximum = x_max
 
+
         graf.Series.Add(currentSeriesName)
         graf.Series(currentSeriesName).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
         If chInvertAxis.Checked = True Then
             graf.ChartAreas(0).AxisY.IsReversed = True
         End If
+
+    End Sub
+
+    Private Sub configGrafType2()
+
+        graf.Series.Clear()
+
+        x_max = 20
+        graf.ChartAreas(0).AxisX.Minimum = 0
+        graf.ChartAreas(0).AxisX.Maximum = x_max
+
+        For i = 0 To cantSens - 1
+            Dim serieName As String = currentSeriesName & " Sens_" & i
+            vecNombresSens(i) = serieName
+            graf.Series.Add(vecNombresSens(i))
+            graf.Series(vecNombresSens(i)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+        Next
 
     End Sub
 
@@ -593,6 +636,21 @@ Public Class main
         If vecTime >= graf.ChartAreas(0).AxisX.Maximum Then
             graf.ChartAreas(0).AxisX.Maximum = vecTime + 10
         End If
+    End Sub
+
+    Private Sub grafMultipleSens()
+        Dim i As Integer
+
+        For i = 0 To cantSens - 1
+            Dim str As String = vecNombresSens(i)
+            graf.Series(str).Points.AddXY(vecTime, vecSens(i))
+            graf.Series(str).BorderWidth = 5
+        Next
+
+        If vecTime >= graf.ChartAreas(0).AxisX.Maximum Then
+            graf.ChartAreas(0).AxisX.Maximum = vecTime + 10
+        End If
+
     End Sub
 
 
@@ -751,6 +809,23 @@ Public Class main
 
     End Sub
 
+    Private Sub saveMultipleData()
+        Dim marcaFecha, marcaHora As String
+        Dim str As String
+        Dim datoStr As String
+        Const separador = "/"
+
+        datoStr = valueIn           'valueIn ya es un string con el formato Sens_0/Sens_1/....
+
+        marcaFecha = getFecha()
+        marcaHora = getHora()
+
+        'tiempo/Sens_0/Sens_1..../marcaFecha/marcaHora
+        str = vecTime & separador & datoStr & separador & marcaFecha & separador & marcaHora & vbCrLf
+        File.AppendAllText(DEFAULT_PATH & resultDir & currentFile, str)
+
+    End Sub
+
 
     Private Sub createHeader()
         Dim header As String
@@ -763,6 +838,7 @@ Public Class main
 
         File.AppendAllText(DEFAULT_PATH & resultDir & currentFile, header)
     End Sub
+
 
 
     Private Sub insertMarca(punto_ As Integer)
