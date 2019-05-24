@@ -1,0 +1,15 @@
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.exe.config
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.exe
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.pdb
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.xml
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.main.resources
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.Resources.resources
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.vbproj.GenerateResource.Cache
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.exe
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.xml
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.pdb
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.vbprojResolveAssemblyReference.cache
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.exe.config
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.exe
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.xml
+D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.pdb

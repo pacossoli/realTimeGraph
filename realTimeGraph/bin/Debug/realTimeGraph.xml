@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+realTimeGraph
+</name>
+</assembly>
+<members>
+<member name="T:realTimeGraph.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:realTimeGraph.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:realTimeGraph.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:realTimeGraph.main">
+ <summary>
+ Trama que envia el EL-05B
+ estatus peso CR
+ estatus 1 byte
+ 7 6 5 4 3 2 1 0  N°  de bit (PESO)
+ 0 1 2 3 4 5 6 7  Orden en el vector statusBin
+ 0 1 0 · · · · X  0 = Peso Bruto / 1 = Peso Neto
+ 0 1 0 · · · X ·  1 = Centro de Cero ± ¼ división
+ 0 1 0 · · X · ·  0 = Peso en movimiento / 1 = Peso en Equilibrio
+ 0 1 0 · X · · ·  0 = Peso positivo / 1 = Peso negativo
+ 0 1 0 X · · · ·  0 = funcionamiento normal / 1 = Fuera de Rango
+ peso: 6 caracteres sin punto decimal, con ceros a la izquierda . 999999 kg = 999,999T
+ CR 0Dh
+ Este equipo manda datos todo el tiempo,a una velocidad fija, que no sabemos cual es, por lo tanto no podemos saber el tiempo de muestreo
+ 
+ Actualizacion 2019
+ Agregado lectura de sensor de temperatura
+ 
+ 
+ 
+ </summary>
+</member>
+</members>
+</doc>
