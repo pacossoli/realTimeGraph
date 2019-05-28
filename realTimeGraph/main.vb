@@ -550,6 +550,7 @@ Public Class main
 
     Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
         Dim aux() As String
+        Dim str As String
 
         objPort.Write(requestDato)
         lbTiempo.Text = vecTime
@@ -557,17 +558,18 @@ Public Class main
         'parseamos la trama
         If hayDato = True Then
             Dim i As Integer
-            aux = Split(valueIn, "/", -1, Microsoft.VisualBasic.CompareMethod.Text)
+            str = valueIn.Replace(".", ",")
+            aux = Split(str, "/", -1, Microsoft.VisualBasic.CompareMethod.Text)
 
             For i = 0 To cantSens - 1
-                vecSens(i) = aux(i)
+                vecSens(i) = CDbl(aux(i))
             Next
         End If
 
         grafMultipleSens()
         saveMultipleData()
 
-        lbValorInstantaneo.Text = vecSens(0) / 100
+        lbValorInstantaneo.Text = vecSens(0)
 
         vecTime = vecTime + tiempoMuestreo
         hayDato = False
@@ -814,8 +816,11 @@ Public Class main
         Dim str As String
         Dim datoStr As String
         Const separador = "/"
+        Try
+            datoStr = valueIn.Replace(vbLf, "")           'valueIn ya es un string con el formato Sens_0/Sens_1/....
+        Catch ex As Exception
 
-        datoStr = valueIn           'valueIn ya es un string con el formato Sens_0/Sens_1/....
+        End Try
 
         marcaFecha = getFecha()
         marcaHora = getHora()
