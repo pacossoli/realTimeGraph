@@ -13,3 +13,14 @@ D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\bin\Debug\realTimeG
 D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.exe
 D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.xml
 D:\proyectosVB.net\realTimeGraph\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.pdb
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.exe.config
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.exe
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.xml
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.pdb
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.exe
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.pdb
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\bin\Debug\realTimeGraph.xml
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.vbprojResolveAssemblyReference.cache
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.main.resources
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.Resources.resources
+D:\VB.Net-proyectos\realTimeGraph\realTimeGraph\obj\Debug\realTimeGraph.vbproj.GenerateResource.Cache

@@ -261,10 +261,10 @@ Public Class main
                     Timer1.Enabled = True  'el principal
                 Case 1
                     Timer3.Interval = tiempoMuestreo * 1000
-                    Timer3.Enabled = False
+                    Timer3.Enabled = True
                 Case 2
                     Timer4.Interval = tiempoMuestreo * 1000
-                    Timer4.Enabled = False
+                    Timer4.Enabled = True
             End Select
             bloquearControles()
         End If
@@ -567,7 +567,7 @@ Public Class main
         grafMultipleSens()
         saveMultipleData()
 
-        lbValorInstantaneo.Text = valueIn
+        lbValorInstantaneo.Text = vecSens(0) / 100
 
         vecTime = vecTime + tiempoMuestreo
         hayDato = False

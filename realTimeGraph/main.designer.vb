@@ -79,6 +79,7 @@ Partial Class main
         Me.btInitCal = New System.Windows.Forms.Button()
         Me.lbConstCal = New System.Windows.Forms.Label()
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label15 = New System.Windows.Forms.Label()
         CType(Me.graf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cTiempoMuestreo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -577,11 +578,21 @@ Partial Class main
         '
         Me.Timer4.Interval = 1000
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(995, 325)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(45, 13)
+        Me.Label15.TabIndex = 49
+        Me.Label15.Text = "Label15"
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1134, 479)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.lbConstCal)
         Me.Controls.Add(Me.btInitCal)
         Me.Controls.Add(Me.btSet1)
@@ -680,4 +691,5 @@ Partial Class main
     Friend WithEvents Timer4 As Timer
     Friend WithEvents txCantSens As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label15 As Label
 End Class
